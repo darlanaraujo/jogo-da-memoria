@@ -19,7 +19,7 @@
     <main class="main">
 
         <!-- Tela Login -->
-        <section class="section-login active" id="telaLogin">
+        <section class="section-login " id="telaLogin">
             <img class="img-login" src="./img/brain.png" alt="imagem cerebro">
             <h1 class="titulo-login">Jogo da Memória</h1>
 
@@ -28,8 +28,26 @@
         </section>
 
         <!-- Tela Jogo -->
-        <section class="section-principal" id="telaPrincipal">
+        <section class="section-principal active" id="telaPrincipal">
+            <header class="placar">
+                <div>
+                    <span class="placar-jogador">Jogador:</span>
+                    <span class="nome-jogador">Nome</span>
+                </div>
+                
+                <div>
+                    <span class="placar-tempo">Tempo:</span>
+                    <span class="tempo-jogo">00</span>
+                </div>
+            </header>
 
+            <div class="wrapper-cards">
+                <div class="card">
+                    <span class="carta frente"></span>
+                    <span class="carta fundo"></span>
+                </div>
+                
+            </div>
         </section>
     </main>
 </body>
