@@ -1,0 +1,10 @@
+@keyframes slideup {
+    from {
+        margin-bottom: -300px;
+        transition: transform 1s;
+    }
+
+    to {
+        margin-bottom: 0;
+    }
+}
