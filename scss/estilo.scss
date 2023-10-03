@@ -98,10 +98,10 @@
             width: 100%;
             border-radius: 8px;
             display: grid;
-            grid-template-columns: repeat(10, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 10px;
             padding: 15px;
-            background-color: rgba($branco, .5);
+            background-color: rgba($branco, .8);
             
             .card {
                 aspect-ratio: 3/4;
@@ -110,11 +110,13 @@
                 position: relative;
                 transition: all 1s ease;
                 transform-style: preserve-3d;
-                cursor: pointer;
+                
 
-                &:hover {
+                &.mostrar-carta{
                     transform: rotateY(180deg);
                 }
+
+                
                 
                 .carta {
                     display: block;
@@ -125,10 +127,16 @@
                     position: absolute;
                     background-size: cover;
                     background-position: center;
+                    cursor: pointer;
                     
-                    &.frente {
-                        background-image: url(../img/beth.png);
+                    &.personagem {
                         transform: rotateY(180deg);
+                        transition: all 550ms ease;
+
+                        &.revelada {
+                            filter: saturate(0);
+                            opacity: .8;
+                        }
                     }
                     
                     &.fundo {
