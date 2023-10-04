@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'fonts';
+@import 'mobile';
 @import 'cores';
 @import 'animacoes';
 
@@ -24,6 +25,13 @@
             margin: 30px;
             border-radius: 12px;
             box-shadow: 2px 2px 20px 20px rgba($pretoClaro, .2);
+            transition: all .5s;
+
+            @include mobile {
+                width: 370px;
+                font-size: 12px;
+                max-height: max-content;
+            }
     
             .img-login {
                 width: 100px;
@@ -83,6 +91,13 @@
             border-radius: 12px;
             box-shadow: 2px 2px 20px 20px rgba($pretoClaro, .2);
             position: relative;
+            transition: all .5s;
+
+            @include mobile {
+                width: 370px;
+                max-width: 370px;
+                min-width: 370px;
+            }
         }
 
         .placar {
@@ -97,6 +112,12 @@
             gap: 20px;
             justify-content: space-between;
             margin-bottom: 25px;
+
+            @include mobile {
+                display: block;
+                font-size: 12px;
+                height: auto;
+            }
 
             .linha {
                 display: flex;
@@ -117,6 +138,10 @@
             gap: 10px;
             padding: 15px;
             background-color: rgba($branco, .8);
+
+            @include mobile {
+                grid-template-columns: repeat(4, 1fr);
+            }
             
             .card {
                 aspect-ratio: 3/4;
@@ -181,6 +206,13 @@
             margin: 30px;
             border-radius: 12px;
             box-shadow: 2px 2px 20px 20px rgba($pretoClaro, .2);
+            transition: all .5s;
+
+            @include mobile {
+                width: 370px;
+                font-size: 12px;
+                max-height: max-content;
+            }
         }
 
         .cabecalho-ranking {

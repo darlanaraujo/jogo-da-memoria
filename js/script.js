@@ -38,10 +38,10 @@ const listaPersonagens = [
 // Funções Tela Login
 inputNomeJogador.addEventListener('input', ({ target }) => {
 
-    if(target.value.length >= 3) {
+    if(target.value.length > 2) {
         btnPlay.removeAttribute('disabled');
         nomeJogador = target.value;
-        
+
     } else {
         btnPlay.setAttribute('disabled', '');
     }
@@ -53,6 +53,20 @@ btnPlay.addEventListener('click', () => {
     telaPrincipal.classList.add('active');
 
     inicio();
+
+});
+
+document.addEventListener('keypress', ({key}) => {
+
+    if(! btnPlay.hasAttribute('disabled')) {
+
+        if(key == 'Enter') {
+            telaLogin.classList.remove('active');
+            telaPrincipal.classList.add('active');
+    
+            inicio();
+        }
+    }
 
 });
 
