@@ -75,7 +75,8 @@
             display: block;
             text-align: center;
             width: 100%;
-            max-width: 1000px;
+            max-width: 680px;
+            min-width: 600px;
             background-image: url(../img/bg.jpg);
             padding: 40px;
             margin: 30px;
@@ -86,7 +87,7 @@
 
         .placar {
             width: 100%;
-            max-width: 1000px;
+            max-width: 680px;
             height: 80px;
             background-color: $branco;
             border-radius: 8px;
