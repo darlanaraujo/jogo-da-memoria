@@ -240,6 +240,14 @@
             
             .tabela {
                 width: 100%;
+
+                .coluna {
+                    padding: 10px;
+
+                    @include mobile {
+                        padding: 5px;
+                    }
+                }
             }
         }
 
