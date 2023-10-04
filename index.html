@@ -19,7 +19,7 @@
     <main class="main">
 
         <!-- Tela Login -->
-        <section class="section-login " id="telaLogin">
+        <section class="section-login active" id="telaLogin">
             <img class="img-login" src="./img/brain.png" alt="imagem cerebro">
             <h1 class="titulo-login">Jogo da Memória</h1>
 
@@ -28,16 +28,18 @@
         </section>
 
         <!-- Tela Jogo -->
-        <section class="section-principal active" id="telaPrincipal">
+        <section class="section-principal " id="telaPrincipal">
             <header class="placar">
-                <div>
+                <div class="linha">
+                    <img class="icone-cerebro" src="./img/brain.png" alt="imagem cerebro">
                     <span class="placar-jogador">Jogador:</span>
-                    <span class="nome-jogador">Nome</span>
+                    <span class="nome-jogador" id="txtJogador">Nome</span>
                 </div>
                 
-                <div>
+                <div class="linha">
+                    <img class="icone-cerebro" src="./img/brain.png" alt="imagem cerebro">
                     <span class="placar-tempo">Tempo:</span>
-                    <span class="tempo-jogo">00</span>
+                    <span class="tempo-jogo" id="txtTempo">00</span>
                 </div>
             </header>
 
@@ -48,6 +50,40 @@
                 </div> -->
                 
             </div>
+        </section>
+
+        <!-- Tela Ranking -->
+        <section class="section-ranking " id="telaRanking">
+            <div class="cabecalho-ranking">
+                <img class="img-logo" src="./img/brain.png" alt="imagem cerebro">
+                <h1 class="titulo-login">Jogo da Memória</h1>
+
+            </div>
+
+            <h1 class="titulo">RANKING</h1>
+
+            <div class="wrapper-tabela">
+                <table class="tabela" border="1" id="elementoTabela">
+                    <tr class="linha">
+                        <td class="coluna">Posição</td>
+                        <td class="coluna">Jogador</td>
+                        <td class="coluna">Tempo</td>
+                    </tr>
+    
+                    <!-- <tr class="linha">
+                        <td class="coluna">Posição</td>
+                        <td class="coluna">Jogador</td>
+                        <td class="coluna">Tempo</td>
+                    </tr> -->
+                    
+                    
+                </table>
+            </div>
+
+            <div class="controles">
+                <button class="btnReinicio btn" id="btnReinicio">Reinicio</button>
+            </div>
+
         </section>
     </main>
 </body>

@@ -6,11 +6,20 @@ const telaLogin = document.querySelector('#telaLogin');
 // Elementos Tela Principal
 const telaPrincipal = document.querySelector('#telaPrincipal');
 const wrapperCards = document.querySelector('#wrapperCards');
+const txtJogador = document.querySelector('#txtJogador');
+const txtTempo = document.querySelector('#txtTempo');
+
+// Elementos Tela Ranking
+const telaRanking = document.querySelector('#telaRanking');
+const elementoTabela = document.querySelector('#elementoTabela');
+const btnReinicio = document.querySelector('#btnReinicio');
 
 // Variáveis globais
 let nomeJogador;
+let tempoJogo;
 let primeiraCarta = '';
 let segundaCarta = '';
+let tempo;
 
 // Array
 const listaPersonagens = [
@@ -31,17 +40,20 @@ inputNomeJogador.addEventListener('input', ({ target }) => {
 
     if(target.value.length >= 3) {
         btnPlay.removeAttribute('disabled');
+        nomeJogador = target.value;
         
-        btnPlay.addEventListener('click', () => {
-            nomeJogador = target.value;
-
-            telaLogin.classList.remove('active');
-            telaPrincipal.classList.add('active');
-
-        });
     } else {
         btnPlay.setAttribute('disabled', '');
     }
+});
+
+btnPlay.addEventListener('click', () => {
+    
+    telaLogin.classList.remove('active');
+    telaPrincipal.classList.add('active');
+
+    inicio();
+
 });
 
 // Banco de dados
@@ -79,7 +91,19 @@ const checkFimJogo = () => {
     const cartasReveladas = document.querySelectorAll('.revelada');
 
     if(cartasReveladas.length === 20) {
-        alert('Parabéns! Final do jogo');
+        clearInterval(tempo);
+        tempoJogo = txtTempo.innerHTML;
+
+        bancoDados(nomeJogador, tempoJogo);
+        
+        setTimeout(() => {
+       
+            telaRanking.classList.add('active');
+
+            ranking();
+
+        }, 1500);
+
     }
 };
 
@@ -127,7 +151,6 @@ const mostrarCarta = ({target}) => {
         checkCartas();
     }
 
-
 };
 
 const criarCarta = (personagem) => {
@@ -147,7 +170,20 @@ const criarCarta = (personagem) => {
     return card;
 };
 
+const time = () => {
+    let cont = 0;
+    tempo = setInterval(() => {
+        cont ++;
+        txtTempo.innerHTML = cont;
+    }, 1000);
+
+    return tempo;
+};
+
 const carregarJogo = () => {
+
+    txtJogador.innerHTML = nomeJogador;
+    time();
 
     const duplicarCartas = [...listaPersonagens, ...listaPersonagens].sort(() => Math.random() - 0.5);
 
@@ -158,4 +194,48 @@ const carregarJogo = () => {
     });
 };
 
-carregarJogo();
+// Funções da tela de ranking
+const ranking = () => {
+    const classificacao = getBanco().sort(colocacao);
+
+    classificacao.forEach((item, index) => {
+        let posicao = index +1;
+        let nome = item.nomeJogador;
+        let tempo = item.tempoJogo;
+
+        criarTabela(posicao, nome, tempo);
+    });
+};
+
+const criarTabela = (posicao, nome, tempo) => {
+    const elementoHTML = document.createElement('tr');
+    elementoHTML.classList.add('linha');
+
+    elementoHTML.innerHTML = `
+        <td class="coluna">${posicao}</td>
+        <td class="coluna">${nome}</td>
+        <td class="coluna">${tempo}</td>
+    `;
+
+    elementoTabela.appendChild(elementoHTML);
+
+};
+
+const colocacao = (a, b) => {
+    if(Number(a.tempoJogo) > Number(b.tempoJogo)) {
+        return 1;
+    } else if(Number(a.tempoJogo) < Number(b.tempoJogo)) {
+        return -1;
+    } else {
+        return 0;
+    }
+};
+
+btnReinicio.addEventListener('click', () => {
+    location.reload(true);
+});
+
+// Inicio da partida
+const inicio = () => {
+    carregarJogo();
+}
