@@ -158,7 +158,7 @@ const criarCarta = (personagem) => {
     const cartaPersonagem = criarElemento('span', 'carta personagem');
     const cartaFundo = criarElemento('span', 'carta fundo');
 
-    cartaPersonagem.style.backgroundImage = `url('../img/${personagem}.png')`
+    cartaPersonagem.style.backgroundImage = `url(./img/${personagem}.png)`;
 
     card.appendChild(cartaPersonagem);
     card.appendChild(cartaFundo);
